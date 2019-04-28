@@ -3,13 +3,12 @@
  * Copyright@Lanqiao (China)
  * Editor:           JDK1.7.32
  */
-package com.huofeng.test;
+package com.huofeng.bean;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-
-import com.huofeng.bean.Student;
+import org.hibernate.cfg.AnnotationConfiguration;
+import org.junit.Test;
 
 /**
  * TODO: File comments
@@ -17,24 +16,26 @@ import com.huofeng.bean.Student;
  * <p>
  * Author:          LF
  * <p>
- * Date:           
+ * Date:           2019年4月27日
  * <p>
- * Time:          
+ * Time:           下午4:54:25
  * <p>
  * Director:        LF
  * <p>
  * <p>
  */
 public class StudentTest {
-	public static void main(String[] args) {
+
+	@Test
+	public void test() {
 		//		配置文件式
 		Student student = new Student();
-		student.setId(1);
-		student.setName("lifei");
-		student.setAge(15);
 
-		Configuration cfg = new Configuration();
-		SessionFactory sf = cfg.configure().buildSessionFactory();
+		student.setName("lifei");
+		student.setAge(35);
+
+		/*Configuration cfg = new Configuration();*/
+		SessionFactory sf = new AnnotationConfiguration().configure().buildSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
 		session.save(student);
@@ -42,4 +43,5 @@ public class StudentTest {
 		session.close();
 		sf.close();
 	}
+
 }

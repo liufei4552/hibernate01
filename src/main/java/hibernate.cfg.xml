@@ -1,40 +1,42 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE hibernate-configuration PUBLIC
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 
 <hibernate-configuration>
 
-    <session-factory>
+	<session-factory>
 
-        <!-- Database connection settings -->
-        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/hibernate</property>
-        <property name="connection.username">root</property>
-        <property name="connection.password">root</property>
+		<!-- Database connection settings -->
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/hibernate</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">root</property>
 
-        <!-- JDBC connection pool (use the built-in) -->
-       <!--  <property name="connection.pool_size">1</property> -->
+		<!-- JDBC connection pool (use the built-in) -->
+		<!-- <property name="connection.pool_size">1</property> -->
 
-        <!-- SQL dialect(方言是mysql还是oracle) -->
-        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<!-- SQL dialect(方言是mysql还是oracle) -->
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 
-        <!-- Enable Hibernate's automatic session context management -->
-        <!-- <property name="current_session_context_class">thread</property> -->
+		<!-- Enable Hibernate's automatic session context management -->
+		<!-- <property name="current_session_context_class">thread</property> -->
 
-        <!-- Disable the second-level cache  -->
-         <!-- <property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property> -->
+		<!-- Disable the second-level cache -->
+		<!-- <property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property> -->
 
-        <!-- Echo all executed SQL to stdout -->
-        <property name="show_sql">true</property>
+		<!-- Echo all executed SQL to stdout -->
+		<property name="show_sql">true</property>
+		<!--sql语句格式化-->
+		<property name="format_sql">true</property>
+		<!-- Drop and re-create the database schema on startup -->
+		<!--create 如果数据库没有这张表就会自动给你创建这张表，update如果字段更改则会去改变数据库表结构 -->
+		<property name="hbm2ddl.auto">create</property>
+		<!--配置文件方式 -->
+		<mapping resource="com/huofeng/bean/Student.hbm.xml" />
+		<!--注解方式 -->
+		<mapping class="com.huofeng.bean.Teacher" />
 
-        <!-- Drop and re-create the database schema on startup -->
-        <!-- <property name="hbm2ddl.auto">update</property> -->
-		<!--配置文件方式-->
-        <mapping resource="com/huofeng/bean/Student.hbm.xml"/>
-        <!--注解方式-->
-        <mapping class="com.huofeng.bean.Teacher"/>
-
-    </session-factory>
+	</session-factory>
 
 </hibernate-configuration>
