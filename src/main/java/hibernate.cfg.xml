@@ -34,9 +34,14 @@
 		<property name="hbm2ddl.auto">create</property>
 		<!--配置文件方式 -->
 		<mapping resource="com/huofeng/bean/Student.hbm.xml" />
+		<mapping resource="com/huofeng/bean/StudentCart.hbm.xml"/>
 		<!--注解方式 -->
 		<mapping class="com.huofeng.bean.Teacher" />
-
+		<mapping class="com.huofeng.bean.Husband" />
+		<mapping class="com.huofeng.bean.Wife" />
+		
+		<mapping class="com.huofeng.bean.Husband2"/>
+		<mapping class="com.huofeng.bean.Wife2"/>
 	</session-factory>
 
 </hibernate-configuration>
